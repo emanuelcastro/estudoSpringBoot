@@ -11,6 +11,6 @@ public class CategoriaResource {
 	@RequestMapping(method=RequestMethod.GET)
 	// TESTE GIT 2
 	public String listar() {
-		return "REST está funcionando.";
+		return "REST está funcionando. Testando os acentos: çáéíóúãõẽàÀÈ";
 	}
 }
