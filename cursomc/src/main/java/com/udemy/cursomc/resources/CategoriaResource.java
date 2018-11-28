@@ -11,6 +11,6 @@ public class CategoriaResource {
 	@RequestMapping(method=RequestMethod.GET)
 	// TESTE GIT 2
 	public String listar() {
-		return "REST est· funcionando.";
+		return "REST est√° funcionando.";
 	}
 }
