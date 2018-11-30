@@ -16,6 +16,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Produto implements Serializable{
+	
+	/**
+	 * Serial.
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
