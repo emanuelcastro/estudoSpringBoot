@@ -12,11 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.udemy.cursomc.domain.enums.TipoCliente;
 
 @Entity
@@ -39,7 +37,6 @@ public class Cliente implements Serializable{
 	
 	private Integer tipoCliente;
 	
-	@JsonManagedReference
 	@OneToMany(mappedBy="cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 	
@@ -47,9 +44,9 @@ public class Cliente implements Serializable{
 	@CollectionTable(name="TELEFONE")
 	private Set<String> telefones = new HashSet<>();
 	
-	@ManyToOne
-	@JoinColumn(name="estado_id")
-	private Estado estado;
+	@JsonIgnore
+	@OneToMany(mappedBy="cliente")
+	private List<Pedido> pedidos = new ArrayList<>();
 	
 	public Cliente() {
 		
@@ -120,12 +117,16 @@ public class Cliente implements Serializable{
 		this.telefones = telefones;
 	}
 
-	public Estado getEstado() {
-		return estado;
+	public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+	public void setTipoCliente(Integer tipoCliente) {
+		this.tipoCliente = tipoCliente;
 	}
 
 	@Override
