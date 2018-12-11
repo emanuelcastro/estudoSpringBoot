@@ -38,7 +38,7 @@ public class Cliente implements Serializable{
 	
 	private String cpfOuCnpj;
 	
-	private Integer tipoCliente;
+	private Integer tipo;
 	
 	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
 	private List<Endereco> enderecos = new ArrayList<>();
@@ -55,13 +55,13 @@ public class Cliente implements Serializable{
 		
 	}
 
-	public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipoCliente) {
+	public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipo) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.cpfOuCnpj = cpfOuCnpj;
-		this.tipoCliente = (tipoCliente == null) ? null : tipoCliente.getCod();
+		this.tipo = (tipo == null) ? null : tipo.getCod();
 	}
 
 	public Integer getId() {
@@ -96,12 +96,12 @@ public class Cliente implements Serializable{
 		this.cpfOuCnpj = cpfOuCnpj;
 	}
 
-	public TipoCliente getTipoCliente() {
-		return TipoCliente.toEnum(tipoCliente);
+	public TipoCliente getTipo() {
+		return TipoCliente.toEnum(tipo);
 	}
 
-	public void setTipoCliente(TipoCliente tipoCliente) {
-		this.tipoCliente = tipoCliente.getCod();
+	public void setTipo(TipoCliente tipoCliente) {
+		this.tipo = tipoCliente.getCod();
 	}
 
 	public List<Endereco> getEnderecos() {
@@ -129,7 +129,7 @@ public class Cliente implements Serializable{
 	}
 
 	public void setTipoCliente(Integer tipoCliente) {
-		this.tipoCliente = tipoCliente;
+		this.tipo = tipoCliente;
 	}
 
 	@Override
